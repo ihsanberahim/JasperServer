@@ -1,11 +1,9 @@
 FROM ubuntu:18.04
 
-RUN apt-get -y update && apt-get -y upgrade
-
-RUN apt-get -y install aria2 unzip
-
-# install java 8
-RUN apt-get -y install openjdk-8-jdk wget
+RUN apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get -y install aria2 unzip \
+    && apt-get -y install openjdk-8-jdk wget
 
 # install tomcat 9
 ENV TOMCAT_MAJOR_VERSION 9
@@ -25,15 +23,6 @@ RUN aria2c "https://jaist.dl.sourceforge.net/project/jasperserver/JasperServer/J
     rm /tmp/jasperserver.zip && \
     mv /usr/src/jasperreports-server-cp-${JASPERSERVER_VERSION}-bin /usr/src/jasperreports-server && \
     rm -r /usr/src/jasperreports-server/samples
-
-# To speed up local testing
-# Download manually the jasperreport server release to working dir
-# Uncomment ADD & RUN commands below and comment out above RUN command
-# ADD TIB_js-jrs-cp_${JASPERSERVER_VERSION}_bin.zip /tmp/jasperserver.zip
-# RUN unzip /tmp/jasperserver.zip -d /usr/src/ && \
-#    rm /tmp/jasperserver.zip && \
-#    mv /usr/src/jasperreports-server-cp-$JASPERSERVER_VERSION-bin /usr/src/jasperreports-server && \
-#    rm -r /usr/src/jasperreports-server/samples
 
 # Used to wait for the database to start before connecting to it
 # This script is from https://github.com/vishnubob/wait-for-it
