@@ -7,9 +7,9 @@ RUN apt-get -y install openjdk-8-jdk wget
 
 # install tomcat 9
 RUN mkdir /usr/local/tomcat
-RUN wget https://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24.tar.gz -O /tmp/tomcat.tar.gz
+RUN wget https://www-us.apache.org/dist/tomcat/tomcat-9/v9.0.26/bin/apache-tomcat-9.0.26.tar.gz -O /tmp/tomcat.tar.gz
 RUN cd /tmp && tar xvfz tomcat.tar.gz
-RUN cp -Rv /tmp/apache-tomcat-9.0.24/* /usr/local/tomcat/
+RUN cp -Rv /tmp/apache-tomcat-9.0.26/* /usr/local/tomcat/
 
 # Execute all in one layer so that it keeps the image as small as possible
 ENV JASPERSERVER_VERSION 7.2.0
