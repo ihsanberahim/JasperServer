@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get -y update && apt-get -y upgrade
 
-RUN apt-get -y aria2
+RUN apt-get -y install aria2
 
 # install java 8
 RUN apt-get -y install openjdk-8-jdk wget
